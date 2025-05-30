@@ -37,8 +37,8 @@ describe ('Funcionalidade: Login', () => {
 
     it('Deve fazer login com sucesso - Usando massa de dados'), () => {
 
-        cy.get('#username').type('perfil.usuario')
-        cy.get('#password').type('perfil.senha')
+        cy.get('#username').type(perfil.usuario)
+        cy.get('#password').type(perfil.senha)
         cy.get('.woocommerce-form > .button').click()
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, kauan220017 (não é kauan220017? Sair)')   
     
