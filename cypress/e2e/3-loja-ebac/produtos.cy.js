@@ -9,11 +9,12 @@ describe('Funcionalidade: Produtos', () => {
     });
 
         it('Deve selecionar um produto da lista', () => {
-        produtosPage.buscarProdutoLista('Beaumont Summit Kit')
+        produtosPage.buscarProdutoLista('Ariel Roll Sleeve Sweatshirt')
             cy.get('#tab-title-description > a').should('contain', 'Descrição')
     });
 
-        it.only('Deve buscar um produto com sucesso', () => {
+
+        it('Deve buscar um produto com sucesso', () => {
         let produto = 'Zeppelin Yoga Pant'
         produtosPage.buscarProduto(produto)
         cy.get('.product_title').should('contain', produto)
@@ -21,18 +22,20 @@ describe('Funcionalidade: Produtos', () => {
     });
 
         it('Deve visitar a pagina do produto', () => {
-
-
-
+            produtosPage.visitarProduto('Zeppelin Yoga Pant')
+            cy.get('.product_title').should('contain', 'Zeppelin Yoga Pant')
 
     });
 
 
-    it('Deve adicionar o produto ao carrinho', () => {
+    it.only('Deve adicionar o produto ao carrinho', () => {
+        let qtd = 7
+        produtosPage.buscarProduto('Ariel Roll Sleeve Sweatshirt')
+        produtosPage.addProdutoCarrinho('L', 'Purple', qtd)
 
+        cy.get('.woodcommerce').should('contain', qtd+ ' x “Ariel Roll Sleeve Sweatshirt” foram adicionados no seu carrinho.')
 
-
-        
+    });
+       
     });
 
-});
